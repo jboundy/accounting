@@ -55,8 +55,8 @@ yarn-error.log
 .classpath
 *.pdb
 *.lnk
-api/Portfolio.API/obj/*
-api/Portfolio.API/bin/*
+api/obj/*
+api/bin/*
 frontend/.eslintrc.cjs
-api/Portfolio.API/Properties/*
+api/Properties/*
 frontend/package-lock.json
