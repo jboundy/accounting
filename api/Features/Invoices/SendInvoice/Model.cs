@@ -1,16 +1,15 @@
-using Accounting.Api.Entities;
 using FastEndpoints;
 
-namespace Accounting.Api.Features.Expenses.GetExpense
+namespace Account.Api.Features.Invoices.SendInvoice
 {
     public class Request
     {
-        public int id { get; set; }
+        public int invoiceId { get; set; }
     }
 
     public class Response
     {
-        public Expense expense { get; set; }
+        public bool saved { get; set; }
     }
 
     public class Validator : Validator<Request>

@@ -1,15 +1,15 @@
 using Accounting.Api.Context;
 using Accounting.Api.Entities;
 
-namespace Accounting.Api.Features.Expenses.CreateExpense
+namespace Accounting.Api.Features.Invoices.UpdateInvoice
 {
-    public static class Data
+    public class Data
     {
-        internal static async Task<Response?> CreateExpense(Expense obj)
+        internal static async Task<Response?> UpdateInvoice(Invoice obj)
         {
             using (var context = new AccountingContext())
             {
-                var result = await context.Expenses.AddAsync(obj);
+                var result = context.Invoices.Update(obj);
                 var saved = await context.SaveChangesAsync();
                 return new Response
                 {

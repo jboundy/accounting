@@ -1,7 +1,7 @@
 using Accounting.Api.Entities;
 using FastEndpoints;
 
-namespace Accounting.Api.Features.Expenses.GetExpense
+namespace Accounting.Api.Features.Invoices.GetInvoice
 {
     public class Request
     {
@@ -10,7 +10,7 @@ namespace Accounting.Api.Features.Expenses.GetExpense
 
     public class Response
     {
-        public Expense expense { get; set; }
+        public Invoice invoice { get; set; }
     }
 
     public class Validator : Validator<Request>

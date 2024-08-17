@@ -1,17 +1,17 @@
 using FastEndpoints;
 
-namespace Accounting.Api.Features.Expenses.DeleteExpense
+namespace Accounting.Api.Features.Invoices.DeleteInvoice
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
         public override void Configure()
         {
-            Delete("expenses");
+            Delete("invoices");
         }
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.DeleteExpense(req.expense);
+            return await Data.DeleteInvoice(req.invoice);
         }
     }
 }

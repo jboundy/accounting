@@ -20,6 +20,8 @@ namespace Accounting.Api.Context
         }
         public virtual DbSet<Expense> Expenses { get; set; }
 
+        public virtual DbSet<Invoice> Invoices { get; set; }
+
 
     }
 }

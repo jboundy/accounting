@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Accounting.Api.Context;
 using Accounting.Api.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace Accounting.Api.Features.Expenses.DeleteExpense
 {
