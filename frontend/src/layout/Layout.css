@@ -1,0 +1,9 @@
+.layout-container {
+  display: flex;
+}
+
+.content-container {
+  margin-left: 250px; /* Adjust this value to match the width of your left nav */
+  padding: 20px; /* Add some padding for better spacing */
+  width: calc(100% - 250px); /* Adjust the width to account for the left nav */
+}

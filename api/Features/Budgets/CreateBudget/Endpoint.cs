@@ -1,17 +1,17 @@
 using FastEndpoints;
 
-namespace Accounting.Api.Features.Invoices.UpdateInvoice
+namespace Accounting.Api.Features.Budgets.CreateBudget
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
         public override void Configure()
         {
-            Put("invoice");
+            Post("budget");
         }
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.UpdateInvoice(req.invoice);
+            return await Data.CreateBudget(req.budget);
         }
     }
 }

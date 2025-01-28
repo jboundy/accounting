@@ -1,10 +1,12 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
+import MainRoutes from "./routes/MainRoutes";
 
 function App() {
   return (
-    <>
-      <h1>Hello Vite + React!</h1>
-    </>
+    <BrowserRouter>
+      <MainRoutes />
+    </BrowserRouter>
   );
 }
 

@@ -6,7 +6,7 @@ namespace Accounting.Api.Features.Invoices.DeleteInvoice
     {
         public override void Configure()
         {
-            Delete("invoices");
+            Delete("invoice");
         }
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)

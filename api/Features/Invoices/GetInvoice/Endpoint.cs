@@ -6,7 +6,7 @@ namespace Accounting.Api.Features.Invoices.GetInvoice
     {
         public override void Configure()
         {
-            Get("invoices/{id}");
+            Get("invoice/{id}");
         }
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)

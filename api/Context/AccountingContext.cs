@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Accounting.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +14,9 @@ namespace Accounting.Api.Context
         {
 
         }
+
+        public virtual DbSet<Budget> Budgets { get; set; }
+
         public virtual DbSet<Expense> Expenses { get; set; }
 
         public virtual DbSet<Invoice> Invoices { get; set; }

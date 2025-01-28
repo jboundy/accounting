@@ -6,17 +6,18 @@ namespace Account.Api.Features.Invoices.SendInvoice
     {
         public override void Configure()
         {
-            Post("invoices/sendinvoice");
+            Post("invoice/sendinvoice");
         }
 
-        public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
-        {
-            //psuedo --------------------
-            //get invoice data
-            //build email message
-            //send to recipient
-            //add date of notice to the invoice obj
-            //--------------------------------
-        }
+        // public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
+        // {
+
+        //psuedo --------------------
+        //get invoice data
+        //build email message
+        //send to recipient
+        //add date of notice to the invoice obj
+        //--------------------------------
+        //}
     }
 }
