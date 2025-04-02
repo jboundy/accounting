@@ -11,7 +11,7 @@ namespace Accounting.Api.Features.Expenses.CreateExpense
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.CreateExpense(req.expense);
+            return await Data.CreateExpense(req.Expense);
         }
     }
 }

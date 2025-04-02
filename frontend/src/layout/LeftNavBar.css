@@ -1,9 +1,0 @@
-.sticky-nav {
-  position: fixed; /* Make the navbar fixed */
-  top: 0; /* Stick to the top */
-  left: 0; /* Stick to the left */
-  height: 100vh; /* Full height of the viewport */
-  width: 250px; /* Set a fixed width for the navbar */
-  overflow-y: auto; /* Enable scrolling if content overflows */
-  z-index: 1000; /* Ensure it stays on top of other content */
-}

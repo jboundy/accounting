@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom";
-import { LeftNavBar } from "./LeftNavBar";
+import "./css/Layout.css";
 import { Container } from "react-bootstrap";
-import "./Layout.css";
+import SideNavbar from "./SideNavbar";
 
 export default function Layout() {
   return (
-    <Container fluid className="layout-container">
-      <LeftNavBar />
-      <Container fluid className="content-container">
+    <>
+      <SideNavbar />
+      <Container fluid className="ms-md-auto px-md-4">
         <Outlet />
       </Container>
-    </Container>
+    </>
   );
 }

@@ -13,11 +13,11 @@ namespace Accounting.Api.Features.Budgets.GetBudget
         {
             using (var context = new AccountingContext())
             {
-                var result = await context.Budgets.SingleOrDefaultAsync(x => x.id == id);
+                var result = await context.Budgets.SingleOrDefaultAsync(x => x.Id == id);
 
                 return new Response
                 {
-                    budget = result
+                    Budget = result
                 };
             }
         }

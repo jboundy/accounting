@@ -9,11 +9,11 @@ namespace Accounting.Api.Features.Invoices.GetInvoice
         {
             using (var context = new AccountingContext())
             {
-                var result = await context.Invoices.SingleOrDefaultAsync(x => x.id == id);
+                var result = await context.Invoices.SingleOrDefaultAsync(x => x.Id == id);
 
                 return new Response
                 {
-                    invoice = result
+                    Invoice = result
                 };
             }
         }

@@ -7,6 +7,6 @@ namespace Accounting.Api.Entities
 {
     public class Invoice
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

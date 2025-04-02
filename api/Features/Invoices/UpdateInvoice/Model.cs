@@ -5,12 +5,12 @@ namespace Accounting.Api.Features.Invoices.UpdateInvoice
 {
     public class Request
     {
-        public Invoice invoice { get; set; }
+        public Invoice Invoice { get; set; }
     }
 
     public class Response
     {
-        public bool saved { get; set; }
+        public bool Saved { get; set; }
     }
 
     public class Validator : Validator<Request>

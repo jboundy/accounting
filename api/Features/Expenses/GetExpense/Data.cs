@@ -9,11 +9,11 @@ namespace Accounting.Api.Features.Expenses.GetExpense
         {
             using (var context = new AccountingContext())
             {
-                var result = await context.Expenses.SingleOrDefaultAsync(x => x.id == id);
+                var result = await context.Expenses.SingleOrDefaultAsync(x => x.Id == id);
 
                 return new Response
                 {
-                    expense = result
+                    Expense = result
                 };
             }
         }

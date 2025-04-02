@@ -5,12 +5,12 @@ namespace Accounting.Api.Features.Expenses.CreateExpense
 {
     public class Request
     {
-        public Expense expense { get; set; }
+        public required Expense Expense { get; set; }
     }
 
     public class Response
     {
-        public bool saved { get; set; }
+        public bool Saved { get; set; }
     }
 
     public class Validator : Validator<Request>

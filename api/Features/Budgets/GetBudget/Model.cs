@@ -9,12 +9,12 @@ namespace Accounting.Api.Features.Budgets.GetBudget
 {
     public class Request
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 
     public class Response
     {
-        public Budget budget { get; set; }
+        public required Budget Budget { get; set; }
     }
 
     public class Validator : Validator<Request>

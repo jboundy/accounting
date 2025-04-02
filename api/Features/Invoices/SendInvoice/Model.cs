@@ -1,15 +1,15 @@
 using FastEndpoints;
 
-namespace Account.Api.Features.Invoices.SendInvoice
+namespace Accounting.Api.Features.Invoices.SendInvoice
 {
     public class Request
     {
-        public int invoiceId { get; set; }
+        public int InvoiceId { get; set; }
     }
 
     public class Response
     {
-        public bool saved { get; set; }
+        public bool Saved { get; set; }
     }
 
     public class Validator : Validator<Request>

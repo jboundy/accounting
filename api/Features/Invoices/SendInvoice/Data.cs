@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Accounting.Api.Context;
 using Accounting.Api.Entities;
 
-namespace Account.Api.Features.Invoices.SendInvoice
+namespace Accounting.Api.Features.Invoices.SendInvoice
 {
     public class Data
     {
@@ -17,7 +17,7 @@ namespace Account.Api.Features.Invoices.SendInvoice
                 var saved = await context.SaveChangesAsync();
                 return new Response
                 {
-                    saved = saved == 1
+                    Saved = saved == 1
                 };
             }
         }

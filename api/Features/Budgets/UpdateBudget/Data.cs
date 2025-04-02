@@ -17,7 +17,7 @@ namespace Accounting.Api.Features.Budgets.UpdateBudget
                 var saved = await context.SaveChangesAsync();
                 return new Response
                 {
-                    saved = saved == 1
+                    Saved = saved == 1
                 };
             }
         }

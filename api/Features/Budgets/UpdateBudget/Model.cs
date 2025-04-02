@@ -9,12 +9,12 @@ namespace Accounting.Api.Features.Budgets.UpdateBudget
 {
     public class Request
     {
-        public Budget budget { get; set; }
+        public required Budget Budget { get; set; }
     }
 
     public class Response
     {
-        public bool saved { get; set; }
+        public bool Saved { get; set; }
     }
 
     public class Validator : Validator<Request>

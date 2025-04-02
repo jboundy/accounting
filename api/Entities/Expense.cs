@@ -7,8 +7,8 @@ namespace Accounting.Api.Entities
 {
     public class Expense
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string category { get; set; }
+        public required string Category { get; set; }
     }
 }

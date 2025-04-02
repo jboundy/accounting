@@ -1,4 +1,5 @@
 using FastEndpoints;
+using NSwag.Annotations;
 
 namespace Accounting.Api.Features.Budgets.CreateBudget
 {
@@ -11,7 +12,7 @@ namespace Accounting.Api.Features.Budgets.CreateBudget
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.CreateBudget(req.budget);
+            return await Data.CreateBudget(req.Budget);
         }
     }
 }

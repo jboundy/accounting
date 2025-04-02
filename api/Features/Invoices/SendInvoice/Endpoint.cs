@@ -1,6 +1,6 @@
 using FastEndpoints;
 
-namespace Account.Api.Features.Invoices.SendInvoice
+namespace Accounting.Api.Features.Invoices.SendInvoice
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
@@ -9,15 +9,16 @@ namespace Account.Api.Features.Invoices.SendInvoice
             Post("invoice/sendinvoice");
         }
 
-        // public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
-        // {
+        public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
+        {
+            //     psuedo--------------------
+            // get invoice data
+            // build email message
+            // send to recipient
+            // add date of notice to the invoice obj
+            // --------------------------------
 
-        //psuedo --------------------
-        //get invoice data
-        //build email message
-        //send to recipient
-        //add date of notice to the invoice obj
-        //--------------------------------
-        //}
+            return new Response();
+        }
     }
 }
