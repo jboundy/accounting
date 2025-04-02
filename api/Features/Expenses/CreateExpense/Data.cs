@@ -5,9 +5,9 @@ namespace Accounting.Api.Features.Expenses.CreateExpense
 {
     public static class Data
     {
-        internal static async Task<Response?> CreateExpense(Expense obj)
+        internal static async Task<Response?> CreateExpense(AccountingContext context, Expense obj)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 var result = await context.Expenses.AddAsync(obj);
                 var saved = await context.SaveChangesAsync();

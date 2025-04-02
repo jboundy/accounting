@@ -1,9 +1,16 @@
+using Accounting.Api.Context;
 using FastEndpoints;
 
 namespace Accounting.Api.Features.Invoices.GetInvoice
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
+        private readonly AccountingContext _context;
+
+        public Endpoint(AccountingContext context)
+        {
+            _context = context;
+        }
         public override void Configure()
         {
             Get("invoice/{id}");
@@ -11,7 +18,7 @@ namespace Accounting.Api.Features.Invoices.GetInvoice
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.GetInvoice(req.Id);
+            return await Data.GetInvoice(_context, req.Id);
         }
     }
 }

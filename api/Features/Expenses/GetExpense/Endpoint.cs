@@ -1,9 +1,16 @@
+using Accounting.Api.Context;
 using FastEndpoints;
 
 namespace Accounting.Api.Features.Expenses.GetExpense
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
+        private readonly AccountingContext _context;
+
+        public Endpoint(AccountingContext context)
+        {
+            _context = context;
+        }
         public override void Configure()
         {
             Get("expenses/{id}");
@@ -11,7 +18,7 @@ namespace Accounting.Api.Features.Expenses.GetExpense
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.GetExpense(req.Id);
+            return await Data.GetExpense(_context, req.Id);
         }
     }
 }

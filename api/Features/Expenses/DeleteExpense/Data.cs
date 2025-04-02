@@ -5,9 +5,9 @@ namespace Accounting.Api.Features.Expenses.DeleteExpense
 {
     public static class Data
     {
-        internal static async Task<Response?> DeleteExpense(Expense obj)
+        internal static async Task<Response?> DeleteExpense(AccountingContext context, Expense obj)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 context.Expenses.Remove(obj);
                 var saved = await context.SaveChangesAsync();

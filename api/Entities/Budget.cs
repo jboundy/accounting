@@ -11,18 +11,17 @@ namespace Accounting.Api.Entities
 
         public double ExpectedAmountToSpend { get; set; }
 
-        public List<LineItem> LineItems { get; set; }
+        public ICollection<Transactions>? Transactions { get; set; }
 
-        public double SumLineItemAmounts()
+        public double SumTransactions(bool isCredit)
         {
-            return LineItems.Sum(x => x.Amount);
+            if (Transactions.Count() == 0)
+            {
+                return 0;
+            }
+
+            var transactions = Transactions.Where(x => x.IsCredit == isCredit).ToList();
+            return transactions.Sum(x => x.Amount);
         }
-
-    }
-
-    public class LineItem
-    {
-        public string Name { get; set; }
-        public double Amount { get; set; }
     }
 }

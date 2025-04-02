@@ -5,9 +5,9 @@ namespace Accounting.Api.Features.Invoices.DeleteInvoice
 {
     public static class Data
     {
-        internal static async Task<Response?> DeleteInvoice(Invoice invoice)
+        internal static async Task<Response?> DeleteInvoice(AccountingContext context, Invoice invoice)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 context.Invoices.Remove(invoice);
                 var saved = await context.SaveChangesAsync();

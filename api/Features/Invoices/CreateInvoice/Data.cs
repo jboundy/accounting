@@ -5,9 +5,9 @@ namespace Accounting.Api.Features.Invoices.CreateInvoice
 {
     public static class Data
     {
-        internal static async Task<Response?> CreateInvoice(Invoice obj)
+        internal static async Task<Response?> CreateInvoice(AccountingContext context, Invoice obj)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 var result = await context.Invoices.AddAsync(obj);
                 var saved = await context.SaveChangesAsync();

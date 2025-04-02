@@ -27,7 +27,7 @@ namespace Accounting.Api
 
             var app = builder.Build();
 
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection(); ;
             app.UseFastEndpoints().UseSwaggerGen();
             app.Run();
         }

@@ -9,9 +9,9 @@ namespace Accounting.Api.Features.Invoices.SendInvoice
 {
     public class Data
     {
-        internal static async Task<Response?> SendInvoice(Invoice obj)
+        internal static async Task<Response?> SendInvoice(AccountingContext context, Invoice obj)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 var result = context.Invoices.Update(obj);
                 var saved = await context.SaveChangesAsync();

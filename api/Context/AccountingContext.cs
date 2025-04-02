@@ -10,17 +10,15 @@ namespace Accounting.Api.Context
 
         }
 
-        public AccountingContext() : base()
-        {
-
-        }
-
         public virtual DbSet<Budget> Budgets { get; set; }
 
         public virtual DbSet<Expense> Expenses { get; set; }
 
         public virtual DbSet<Invoice> Invoices { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
 
+        }
 
     }
 }

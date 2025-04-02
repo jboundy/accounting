@@ -5,9 +5,9 @@ namespace Accounting.Api.Features.Expenses.GetExpense
 {
     public static class Data
     {
-        internal static async Task<Response?> GetExpense(int id)
+        internal static async Task<Response?> GetExpense(AccountingContext context, int id)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 var result = await context.Expenses.SingleOrDefaultAsync(x => x.Id == id);
 

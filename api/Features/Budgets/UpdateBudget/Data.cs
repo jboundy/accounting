@@ -9,9 +9,9 @@ namespace Accounting.Api.Features.Budgets.UpdateBudget
 {
     public class Data
     {
-        internal static async Task<Response?> UpdateInvoice(Budget obj)
+        internal static async Task<Response?> UpdateInvoice(AccountingContext context, Budget obj)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 var result = context.Budgets.Update(obj);
                 var saved = await context.SaveChangesAsync();

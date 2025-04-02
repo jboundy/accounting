@@ -5,9 +5,9 @@ namespace Accounting.Api.Features.Budgets.CreateBudget
 {
     public static class Data
     {
-        internal static async Task<Response?> CreateBudget(Budget obj)
+        internal static async Task<Response?> CreateBudget(AccountingContext context, Budget obj)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 var result = await context.Budgets.AddAsync(obj);
                 var saved = await context.SaveChangesAsync();

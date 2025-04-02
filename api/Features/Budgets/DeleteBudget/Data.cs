@@ -9,9 +9,9 @@ namespace Accounting.Api.Features.Budgets.DeleteBudget
 {
     public static class Data
     {
-        internal static async Task<Response?> DeleteBudget(Budget budget)
+        internal static async Task<Response?> DeleteBudget(AccountingContext context, Budget budget)
         {
-            using (var context = new AccountingContext())
+            using (context)
             {
                 context.Budgets.Remove(budget);
                 var saved = await context.SaveChangesAsync();
