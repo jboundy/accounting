@@ -3,14 +3,19 @@ using Accounting.Api.Entities;
 
 namespace Accounting.Api.Features.Expenses.UpdateExpense
 {
-    public static class Data
+    public class Data
     {
-        internal static async Task<Response?> UpdateExpense(AccountingContext context, Expense obj)
+        private static AccountingContext _context;
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> UpdateExpense(Expense obj)
+        {
+            using (_context)
             {
-                var result = context.Expenses.Update(obj);
-                var saved = await context.SaveChangesAsync();
+                var result = _context.Expenses.Update(obj);
+                var saved = await _context.SaveChangesAsync();
                 return new Response
                 {
                     Saved = saved == 1

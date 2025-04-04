@@ -3,14 +3,19 @@ using Accounting.Api.Entities;
 
 namespace Accounting.Api.Features.Invoices.CreateInvoice
 {
-    public static class Data
+    public class Data
     {
-        internal static async Task<Response?> CreateInvoice(AccountingContext context, Invoice obj)
+        private static AccountingContext _context;
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> CreateInvoice(Invoice obj)
+        {
+            using (_context)
             {
-                var result = await context.Invoices.AddAsync(obj);
-                var saved = await context.SaveChangesAsync();
+                var result = await _context.Invoices.AddAsync(obj);
+                var saved = await _context.SaveChangesAsync();
                 return new Response
                 {
                     Saved = saved == 1

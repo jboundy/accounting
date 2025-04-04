@@ -3,14 +3,19 @@ using Accounting.Api.Entities;
 
 namespace Accounting.Api.Features.Expenses.DeleteExpense
 {
-    public static class Data
+    public class Data
     {
-        internal static async Task<Response?> DeleteExpense(AccountingContext context, Expense obj)
+        private static AccountingContext _context;
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> DeleteExpense(Expense obj)
+        {
+            using (_context)
             {
-                context.Expenses.Remove(obj);
-                var saved = await context.SaveChangesAsync();
+                _context.Expenses.Remove(obj);
+                var saved = await _context.SaveChangesAsync();
                 return new Response
                 {
                     Saved = saved == 1

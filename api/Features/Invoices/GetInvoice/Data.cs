@@ -5,11 +5,16 @@ namespace Accounting.Api.Features.Invoices.GetInvoice
 {
     public class Data
     {
-        internal static async Task<Response?> GetInvoice(AccountingContext context, int id)
+        private static AccountingContext _context;
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> GetInvoice(int id)
+        {
+            using (_context)
             {
-                var result = await context.Invoices.SingleOrDefaultAsync(x => x.Id == id);
+                var result = await _context.Invoices.SingleOrDefaultAsync(x => x.Id == id);
 
                 return new Response
                 {

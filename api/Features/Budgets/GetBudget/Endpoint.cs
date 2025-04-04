@@ -22,7 +22,7 @@ namespace Accounting.Api.Features.Budgets.GetBudget
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.GetBudget(_context, req.Id);
+            return await Data.GetBudget(req.Id);
         }
     }
 }

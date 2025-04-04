@@ -3,14 +3,19 @@ using Accounting.Api.Entities;
 
 namespace Accounting.Api.Features.Invoices.DeleteInvoice
 {
-    public static class Data
+    public class Data
     {
-        internal static async Task<Response?> DeleteInvoice(AccountingContext context, Invoice invoice)
+        private static AccountingContext _context;
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> DeleteInvoice(Invoice invoice)
+        {
+            using (_context)
             {
-                context.Invoices.Remove(invoice);
-                var saved = await context.SaveChangesAsync();
+                _context.Invoices.Remove(invoice);
+                var saved = await _context.SaveChangesAsync();
                 return new Response
                 {
                     Saved = saved == 1

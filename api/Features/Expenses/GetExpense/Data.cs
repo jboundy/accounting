@@ -3,13 +3,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Accounting.Api.Features.Expenses.GetExpense
 {
-    public static class Data
+    public class Data
     {
-        internal static async Task<Response?> GetExpense(AccountingContext context, int id)
+        private static AccountingContext _context;
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> GetExpense(int id)
+        {
+            using (_context)
             {
-                var result = await context.Expenses.SingleOrDefaultAsync(x => x.Id == id);
+                var result = await _context.Expenses.SingleOrDefaultAsync(x => x.Id == id);
 
                 return new Response
                 {

@@ -18,7 +18,7 @@ namespace Accounting.Api.Features.Budgets.DeleteBudget
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.DeleteBudget(_context, req.Budget);
+            return await Data.DeleteBudget(req.Budget);
         }
     }
 }

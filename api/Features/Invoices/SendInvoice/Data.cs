@@ -9,12 +9,17 @@ namespace Accounting.Api.Features.Invoices.SendInvoice
 {
     public class Data
     {
-        internal static async Task<Response?> SendInvoice(AccountingContext context, Invoice obj)
+        private static AccountingContext _context;
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> SendInvoice(Invoice obj)
+        {
+            using (_context)
             {
-                var result = context.Invoices.Update(obj);
-                var saved = await context.SaveChangesAsync();
+                var result = _context.Invoices.Update(obj);
+                var saved = await _context.SaveChangesAsync();
                 return new Response
                 {
                     Saved = saved == 1

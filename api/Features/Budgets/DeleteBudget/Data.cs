@@ -7,14 +7,21 @@ using Accounting.Api.Entities;
 
 namespace Accounting.Api.Features.Budgets.DeleteBudget
 {
-    public static class Data
+    public class Data
     {
-        internal static async Task<Response?> DeleteBudget(AccountingContext context, Budget budget)
+        private static AccountingContext _context;
+
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+
+        internal static async Task<Response?> DeleteBudget(Budget budget)
+        {
+            using (_context)
             {
-                context.Budgets.Remove(budget);
-                var saved = await context.SaveChangesAsync();
+                _context.Budgets.Remove(budget);
+                var saved = await _context.SaveChangesAsync();
                 return new Response
                 {
                     Saved = saved == 1

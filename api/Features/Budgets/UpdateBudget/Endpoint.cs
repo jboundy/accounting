@@ -22,7 +22,7 @@ namespace Accounting.Api.Features.Budgets.UpdateBudget
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.UpdateInvoice(_context, req.Budget);
+            return await Data.UpdateInvoice(req.Budget);
         }
     }
 }

@@ -9,11 +9,17 @@ namespace Accounting.Api.Features.Budgets.GetBudget
 {
     public class Data
     {
-        internal static async Task<Response?> GetBudget(AccountingContext context, int id)
+        private static AccountingContext _context;
+
+        public Data(AccountingContext context)
         {
-            using (context)
+            _context = context;
+        }
+        internal static async Task<Response?> GetBudget(int id)
+        {
+            using (_context)
             {
-                var result = await context.Budgets.SingleOrDefaultAsync(x => x.Id == id);
+                var result = await _context.Budgets.SingleOrDefaultAsync(x => x.Id == id);
 
                 return new Response
                 {

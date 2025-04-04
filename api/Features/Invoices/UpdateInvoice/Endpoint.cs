@@ -18,7 +18,7 @@ namespace Accounting.Api.Features.Invoices.UpdateInvoice
 
         public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.UpdateInvoice(_context, req.Invoice);
+            return await Data.UpdateInvoice(req.Invoice);
         }
     }
 }
