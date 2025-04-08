@@ -1,28 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Accounting.Api.Context;
 using FastEndpoints;
+using Wolverine;
 
 namespace Accounting.Api.Features.Budgets.UpdateBudget
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
-        private readonly AccountingContext _context;
+        IMessageBus _messageBus;
 
-        public Endpoint(AccountingContext context)
+        public Endpoint(IMessageBus messageBus)
         {
-            _context = context;
+            _messageBus = messageBus;
         }
         public override void Configure()
         {
             Put("budget");
+            AllowAnonymous();
         }
 
-        public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
+        public override async Task HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.UpdateInvoice(req.Budget);
+            var response = await _messageBus.InvokeAsync<Response>(new Command(req.Budget, ct));
+            await SendAsync(response, StatusCodes.Status200OK, ct);
         }
     }
 }

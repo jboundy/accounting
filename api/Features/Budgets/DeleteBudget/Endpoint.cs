@@ -1,24 +1,26 @@
-using Accounting.Api.Context;
+
 using FastEndpoints;
+using Wolverine;
 
 namespace Accounting.Api.Features.Budgets.DeleteBudget
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
-        private readonly AccountingContext _context;
+        IMessageBus _messageBus;
 
-        public Endpoint(AccountingContext context)
+        public Endpoint(IMessageBus messageBus)
         {
-            _context = context;
+            _messageBus = messageBus;
         }
         public override void Configure()
         {
             Delete("budget");
         }
 
-        public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
+        public override async Task HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.DeleteBudget(req.Budget);
+            var response = await _messageBus.InvokeAsync<Response>(new Command(req.Budget, ct));
+            await SendAsync(response, StatusCodes.Status200OK, ct);
         }
     }
 }

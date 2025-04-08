@@ -1,5 +1,6 @@
 using Accounting.Api.Entities;
 using FastEndpoints;
+using FluentValidation;
 
 namespace Accounting.Api.Features.Budgets.DeleteBudget
 {
@@ -17,7 +18,7 @@ namespace Accounting.Api.Features.Budgets.DeleteBudget
     {
         public Validator()
         {
-
+            RuleFor(x => x.Budget).NotNull().WithMessage("Budget is required.");
         }
     }
 }

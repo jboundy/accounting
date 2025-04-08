@@ -2,13 +2,11 @@ open terminal to database folder
 
 docker-compose up -d
 
-if no migration
-dotnet ef migrations add InitialCreate
-
-dotnet ef database update
-
 generate api client for react
 terminal into frontend folder
+
+install nswag tool
+npm install nswag -g
 
 run .net api in debug mode
 

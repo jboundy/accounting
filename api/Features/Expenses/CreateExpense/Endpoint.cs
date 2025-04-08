@@ -1,24 +1,18 @@
-using Accounting.Api.Context;
 using FastEndpoints;
 
 namespace Accounting.Api.Features.Expenses.CreateExpense
 {
     public sealed class Endpoint : Endpoint<Request, Response>
     {
-        private readonly AccountingContext _context;
 
-        public Endpoint(AccountingContext context)
-        {
-            _context = context;
-        }
         public override void Configure()
         {
             Post("expenses");
         }
 
-        public override async Task<Response> HandleAsync(Request req, CancellationToken ct)
+        public override async Task HandleAsync(Request req, CancellationToken ct)
         {
-            return await Data.CreateExpense(req.Expense);
+            await SendAsync(Response, StatusCodes.Status200OK, ct);
         }
     }
 }

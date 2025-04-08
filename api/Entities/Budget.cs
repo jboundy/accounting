@@ -11,7 +11,7 @@ namespace Accounting.Api.Entities
 
         public double ExpectedAmountToSpend { get; set; }
 
-        public ICollection<Transactions>? Transactions { get; set; }
+        public ICollection<Transactions>? Transactions { get; set; } = null;
 
         public double SumTransactions(bool isCredit)
         {
