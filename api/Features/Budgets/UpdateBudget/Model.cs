@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Accounting.Api.Entities;
 using FastEndpoints;
+using FluentValidation;
 
 namespace Accounting.Api.Features.Budgets.UpdateBudget
 {
@@ -21,7 +18,7 @@ namespace Accounting.Api.Features.Budgets.UpdateBudget
     {
         public Validator()
         {
-
+            RuleFor(x => x.Budget).NotNull().WithMessage("Budget is required.");
         }
     }
 }

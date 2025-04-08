@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using Accounting.Api.Entities;
 using FastEndpoints;
 using FluentValidation;
