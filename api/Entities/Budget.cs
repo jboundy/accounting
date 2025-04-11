@@ -9,19 +9,17 @@ namespace Accounting.Api.Entities
     {
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
         public double ExpectedAmountToSpend { get; set; }
 
-        public ICollection<Transactions>? Transactions { get; set; } = null;
+        public ICollection<Expense>? Expenses { get; set; } = null;
 
-        public double SumTransactions(bool isCredit)
+        public double ActualAmountSpent => SumExpenses();
+
+        public double SumExpenses()
         {
-            if (Transactions.Count() == 0)
-            {
-                return 0;
-            }
-
-            var transactions = Transactions.Where(x => x.IsCredit == isCredit).ToList();
-            return transactions.Sum(x => x.Amount);
+            return Expenses?.Sum(x => x.Amount) ?? 0;
         }
     }
 }

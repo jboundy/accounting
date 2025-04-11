@@ -51,16 +51,16 @@ export class Client {
             result200 = AccountingApiFeaturesInvoicesUpdateInvoiceResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -103,16 +103,16 @@ export class Client {
             result200 = AccountingApiFeaturesInvoicesDeleteInvoiceResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -155,16 +155,16 @@ export class Client {
             result200 = AccountingApiFeaturesInvoicesCreateInvoiceResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -207,16 +207,16 @@ export class Client {
             result200 = AccountingApiFeaturesInvoicesSendInvoiceResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -258,16 +258,16 @@ export class Client {
             result200 = AccountingApiFeaturesInvoicesGetInvoiceResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -310,16 +310,16 @@ export class Client {
             result200 = AccountingApiFeaturesExpensesUpdateExpenseResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -362,16 +362,16 @@ export class Client {
             result200 = AccountingApiFeaturesExpensesDeleteExpenseResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -414,16 +414,16 @@ export class Client {
             result200 = AccountingApiFeaturesExpensesCreateExpenseResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -465,16 +465,16 @@ export class Client {
             result200 = AccountingApiFeaturesExpensesGetExpenseResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -517,16 +517,16 @@ export class Client {
             result200 = AccountingApiFeaturesBudgetsUpdateBudgetResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -569,16 +569,16 @@ export class Client {
             result200 = AccountingApiFeaturesBudgetsDeleteBudgetResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -620,10 +620,6 @@ export class Client {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = AccountingApiFeaturesBudgetsCreateBudgetResponse.fromJS(resultData200);
             return result200;
-            });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
@@ -672,16 +668,16 @@ export class Client {
             result200 = AccountingApiFeaturesBudgetsGetBudgetResponse.fromJS(resultData200);
             return result200;
             });
-        } else if (status === 401) {
-            return response.text().then((_responseText) => {
-            return throwException("Unauthorized", status, _responseText, _headers);
-            });
         } else if (status === 400) {
             return response.text().then((_responseText) => {
             let result400: any = null;
             let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
             });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
@@ -726,74 +722,6 @@ export class AccountingApiFeaturesInvoicesUpdateInvoiceResponse implements IAcco
 
 export interface IAccountingApiFeaturesInvoicesUpdateInvoiceResponse {
     saved?: boolean;
-}
-
-/** the dto used to send an error response to the client */
-export class FastEndpointsErrorResponse implements IFastEndpointsErrorResponse {
-    /** the http status code sent to the client. default is 400. */
-    statusCode?: number;
-    /** the message for the error response */
-    message?: string;
-    /** the collection of errors for the current context */
-    errors?: { [key: string]: string[]; };
-
-    constructor(data?: IFastEndpointsErrorResponse) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-        if (!data) {
-            this.statusCode = 400;
-            this.message = "One or more errors occurred!";
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.statusCode = _data["statusCode"] !== undefined ? _data["statusCode"] : 400;
-            this.message = _data["message"] !== undefined ? _data["message"] : "One or more errors occurred!";
-            if (_data["errors"]) {
-                this.errors = {} as any;
-                for (let key in _data["errors"]) {
-                    if (_data["errors"].hasOwnProperty(key))
-                        (<any>this.errors)![key] = _data["errors"][key] !== undefined ? _data["errors"][key] : [];
-                }
-            }
-        }
-    }
-
-    static fromJS(data: any): FastEndpointsErrorResponse {
-        data = typeof data === 'object' ? data : {};
-        let result = new FastEndpointsErrorResponse();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["statusCode"] = this.statusCode;
-        data["message"] = this.message;
-        if (this.errors) {
-            data["errors"] = {};
-            for (let key in this.errors) {
-                if (this.errors.hasOwnProperty(key))
-                    (<any>data["errors"])[key] = (<any>this.errors)[key];
-            }
-        }
-        return data;
-    }
-}
-
-/** the dto used to send an error response to the client */
-export interface IFastEndpointsErrorResponse {
-    /** the http status code sent to the client. default is 400. */
-    statusCode?: number;
-    /** the message for the error response */
-    message?: string;
-    /** the collection of errors for the current context */
-    errors?: { [key: string]: string[]; };
 }
 
 export class AccountingApiFeaturesInvoicesUpdateInvoiceRequest implements IAccountingApiFeaturesInvoicesUpdateInvoiceRequest {
@@ -866,6 +794,74 @@ export class AccountingApiEntitiesInvoice implements IAccountingApiEntitiesInvoi
 
 export interface IAccountingApiEntitiesInvoice {
     id?: number;
+}
+
+/** the dto used to send an error response to the client */
+export class FastEndpointsErrorResponse implements IFastEndpointsErrorResponse {
+    /** the http status code sent to the client. default is 400. */
+    statusCode?: number;
+    /** the message for the error response */
+    message?: string;
+    /** the collection of errors for the current context */
+    errors?: { [key: string]: string[]; };
+
+    constructor(data?: IFastEndpointsErrorResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+        if (!data) {
+            this.statusCode = 400;
+            this.message = "One or more errors occurred!";
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.statusCode = _data["statusCode"] !== undefined ? _data["statusCode"] : 400;
+            this.message = _data["message"] !== undefined ? _data["message"] : "One or more errors occurred!";
+            if (_data["errors"]) {
+                this.errors = {} as any;
+                for (let key in _data["errors"]) {
+                    if (_data["errors"].hasOwnProperty(key))
+                        (<any>this.errors)![key] = _data["errors"][key] !== undefined ? _data["errors"][key] : [];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): FastEndpointsErrorResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new FastEndpointsErrorResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["statusCode"] = this.statusCode;
+        data["message"] = this.message;
+        if (this.errors) {
+            data["errors"] = {};
+            for (let key in this.errors) {
+                if (this.errors.hasOwnProperty(key))
+                    (<any>data["errors"])[key] = (<any>this.errors)[key];
+            }
+        }
+        return data;
+    }
+}
+
+/** the dto used to send an error response to the client */
+export interface IFastEndpointsErrorResponse {
+    /** the http status code sent to the client. default is 400. */
+    statusCode?: number;
+    /** the message for the error response */
+    message?: string;
+    /** the collection of errors for the current context */
+    errors?: { [key: string]: string[]; };
 }
 
 export class AccountingApiFeaturesInvoicesSendInvoiceResponse implements IAccountingApiFeaturesInvoicesSendInvoiceResponse {
@@ -1224,7 +1220,10 @@ export interface IAccountingApiFeaturesExpensesUpdateExpenseRequest {
 
 export class AccountingApiEntitiesExpense implements IAccountingApiEntitiesExpense {
     id?: number;
+    budgetId?: number;
     category?: string;
+    amount?: number;
+    date?: Date;
 
     constructor(data?: IAccountingApiEntitiesExpense) {
         if (data) {
@@ -1238,7 +1237,10 @@ export class AccountingApiEntitiesExpense implements IAccountingApiEntitiesExpen
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.budgetId = _data["budgetId"];
             this.category = _data["category"];
+            this.amount = _data["amount"];
+            this.date = _data["date"] ? new Date(_data["date"].toString()) : <any>undefined;
         }
     }
 
@@ -1252,14 +1254,20 @@ export class AccountingApiEntitiesExpense implements IAccountingApiEntitiesExpen
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["budgetId"] = this.budgetId;
         data["category"] = this.category;
+        data["amount"] = this.amount;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         return data;
     }
 }
 
 export interface IAccountingApiEntitiesExpense {
     id?: number;
+    budgetId?: number;
     category?: string;
+    amount?: number;
+    date?: Date;
 }
 
 export class AccountingApiFeaturesExpensesGetExpenseResponse implements IAccountingApiFeaturesExpensesGetExpenseResponse {
@@ -1509,7 +1517,7 @@ export interface IAccountingApiFeaturesBudgetsUpdateBudgetResponse {
 }
 
 export class AccountingApiFeaturesBudgetsUpdateBudgetRequest implements IAccountingApiFeaturesBudgetsUpdateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget!: AccountingApiEntitiesBudget;
 
     constructor(data?: IAccountingApiFeaturesBudgetsUpdateBudgetRequest) {
         if (data) {
@@ -1518,11 +1526,14 @@ export class AccountingApiFeaturesBudgetsUpdateBudgetRequest implements IAccount
                     (<any>this)[property] = (<any>data)[property];
             }
         }
+        if (!data) {
+            this.budget = new AccountingApiEntitiesBudget();
+        }
     }
 
     init(_data?: any) {
         if (_data) {
-            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : <any>undefined;
+            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : new AccountingApiEntitiesBudget();
         }
     }
 
@@ -1541,13 +1552,15 @@ export class AccountingApiFeaturesBudgetsUpdateBudgetRequest implements IAccount
 }
 
 export interface IAccountingApiFeaturesBudgetsUpdateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget: AccountingApiEntitiesBudget;
 }
 
 export class AccountingApiEntitiesBudget implements IAccountingApiEntitiesBudget {
     id?: number;
+    name?: string;
     expectedAmountToSpend?: number;
-    lineItems?: AccountingApiEntitiesLineItem[];
+    expenses?: AccountingApiEntitiesExpense[] | undefined;
+    actualAmountSpent?: number;
 
     constructor(data?: IAccountingApiEntitiesBudget) {
         if (data) {
@@ -1561,12 +1574,14 @@ export class AccountingApiEntitiesBudget implements IAccountingApiEntitiesBudget
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.name = _data["name"];
             this.expectedAmountToSpend = _data["expectedAmountToSpend"];
-            if (Array.isArray(_data["lineItems"])) {
-                this.lineItems = [] as any;
-                for (let item of _data["lineItems"])
-                    this.lineItems!.push(AccountingApiEntitiesLineItem.fromJS(item));
+            if (Array.isArray(_data["expenses"])) {
+                this.expenses = [] as any;
+                for (let item of _data["expenses"])
+                    this.expenses!.push(AccountingApiEntitiesExpense.fromJS(item));
             }
+            this.actualAmountSpent = _data["actualAmountSpent"];
         }
     }
 
@@ -1580,60 +1595,24 @@ export class AccountingApiEntitiesBudget implements IAccountingApiEntitiesBudget
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["name"] = this.name;
         data["expectedAmountToSpend"] = this.expectedAmountToSpend;
-        if (Array.isArray(this.lineItems)) {
-            data["lineItems"] = [];
-            for (let item of this.lineItems)
-                data["lineItems"].push(item.toJSON());
+        if (Array.isArray(this.expenses)) {
+            data["expenses"] = [];
+            for (let item of this.expenses)
+                data["expenses"].push(item.toJSON());
         }
+        data["actualAmountSpent"] = this.actualAmountSpent;
         return data;
     }
 }
 
 export interface IAccountingApiEntitiesBudget {
     id?: number;
+    name?: string;
     expectedAmountToSpend?: number;
-    lineItems?: AccountingApiEntitiesLineItem[];
-}
-
-export class AccountingApiEntitiesLineItem implements IAccountingApiEntitiesLineItem {
-    name?: string;
-    amount?: number;
-
-    constructor(data?: IAccountingApiEntitiesLineItem) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.amount = _data["amount"];
-        }
-    }
-
-    static fromJS(data: any): AccountingApiEntitiesLineItem {
-        data = typeof data === 'object' ? data : {};
-        let result = new AccountingApiEntitiesLineItem();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["amount"] = this.amount;
-        return data;
-    }
-}
-
-export interface IAccountingApiEntitiesLineItem {
-    name?: string;
-    amount?: number;
+    expenses?: AccountingApiEntitiesExpense[] | undefined;
+    actualAmountSpent?: number;
 }
 
 export class AccountingApiFeaturesBudgetsGetBudgetResponse implements IAccountingApiFeaturesBudgetsGetBudgetResponse {
@@ -1739,7 +1718,7 @@ export interface IAccountingApiFeaturesBudgetsDeleteBudgetResponse {
 }
 
 export class AccountingApiFeaturesBudgetsDeleteBudgetRequest implements IAccountingApiFeaturesBudgetsDeleteBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget!: AccountingApiEntitiesBudget;
 
     constructor(data?: IAccountingApiFeaturesBudgetsDeleteBudgetRequest) {
         if (data) {
@@ -1748,11 +1727,14 @@ export class AccountingApiFeaturesBudgetsDeleteBudgetRequest implements IAccount
                     (<any>this)[property] = (<any>data)[property];
             }
         }
+        if (!data) {
+            this.budget = new AccountingApiEntitiesBudget();
+        }
     }
 
     init(_data?: any) {
         if (_data) {
-            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : <any>undefined;
+            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : new AccountingApiEntitiesBudget();
         }
     }
 
@@ -1771,7 +1753,7 @@ export class AccountingApiFeaturesBudgetsDeleteBudgetRequest implements IAccount
 }
 
 export interface IAccountingApiFeaturesBudgetsDeleteBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget: AccountingApiEntitiesBudget;
 }
 
 export class AccountingApiFeaturesBudgetsCreateBudgetResponse implements IAccountingApiFeaturesBudgetsCreateBudgetResponse {
@@ -1811,7 +1793,7 @@ export interface IAccountingApiFeaturesBudgetsCreateBudgetResponse {
 }
 
 export class AccountingApiFeaturesBudgetsCreateBudgetRequest implements IAccountingApiFeaturesBudgetsCreateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget!: AccountingApiEntitiesBudget;
 
     constructor(data?: IAccountingApiFeaturesBudgetsCreateBudgetRequest) {
         if (data) {
@@ -1820,11 +1802,14 @@ export class AccountingApiFeaturesBudgetsCreateBudgetRequest implements IAccount
                     (<any>this)[property] = (<any>data)[property];
             }
         }
+        if (!data) {
+            this.budget = new AccountingApiEntitiesBudget();
+        }
     }
 
     init(_data?: any) {
         if (_data) {
-            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : <any>undefined;
+            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : new AccountingApiEntitiesBudget();
         }
     }
 
@@ -1843,7 +1828,7 @@ export class AccountingApiFeaturesBudgetsCreateBudgetRequest implements IAccount
 }
 
 export interface IAccountingApiFeaturesBudgetsCreateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget: AccountingApiEntitiesBudget;
 }
 
 export class InvoicesUpdateInvoiceResponse implements IInvoicesUpdateInvoiceResponse {
@@ -2310,7 +2295,10 @@ export interface IExpensesUpdateExpenseRequest {
 
 export class EntitiesExpense implements IEntitiesExpense {
     id?: number;
+    budgetId?: number;
     category?: string;
+    amount?: number;
+    date?: Date;
 
     constructor(data?: IEntitiesExpense) {
         if (data) {
@@ -2324,7 +2312,10 @@ export class EntitiesExpense implements IEntitiesExpense {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.budgetId = _data["budgetId"];
             this.category = _data["category"];
+            this.amount = _data["amount"];
+            this.date = _data["date"] ? new Date(_data["date"].toString()) : <any>undefined;
         }
     }
 
@@ -2338,14 +2329,20 @@ export class EntitiesExpense implements IEntitiesExpense {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["budgetId"] = this.budgetId;
         data["category"] = this.category;
+        data["amount"] = this.amount;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         return data;
     }
 }
 
 export interface IEntitiesExpense {
     id?: number;
+    budgetId?: number;
     category?: string;
+    amount?: number;
+    date?: Date;
 }
 
 export class ExpensesGetExpenseResponse implements IExpensesGetExpenseResponse {
@@ -2595,7 +2592,7 @@ export interface IBudgetsUpdateBudgetResponse {
 }
 
 export class BudgetsUpdateBudgetRequest implements IBudgetsUpdateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget!: AccountingApiEntitiesBudget;
 
     constructor(data?: IBudgetsUpdateBudgetRequest) {
         if (data) {
@@ -2604,11 +2601,14 @@ export class BudgetsUpdateBudgetRequest implements IBudgetsUpdateBudgetRequest {
                     (<any>this)[property] = (<any>data)[property];
             }
         }
+        if (!data) {
+            this.budget = new AccountingApiEntitiesBudget();
+        }
     }
 
     init(_data?: any) {
         if (_data) {
-            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : <any>undefined;
+            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : new AccountingApiEntitiesBudget();
         }
     }
 
@@ -2627,13 +2627,15 @@ export class BudgetsUpdateBudgetRequest implements IBudgetsUpdateBudgetRequest {
 }
 
 export interface IBudgetsUpdateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget: AccountingApiEntitiesBudget;
 }
 
 export class EntitiesBudget implements IEntitiesBudget {
     id?: number;
+    name?: string;
     expectedAmountToSpend?: number;
-    lineItems?: AccountingApiEntitiesLineItem[];
+    expenses?: AccountingApiEntitiesExpense[] | undefined;
+    actualAmountSpent?: number;
 
     constructor(data?: IEntitiesBudget) {
         if (data) {
@@ -2647,12 +2649,14 @@ export class EntitiesBudget implements IEntitiesBudget {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.name = _data["name"];
             this.expectedAmountToSpend = _data["expectedAmountToSpend"];
-            if (Array.isArray(_data["lineItems"])) {
-                this.lineItems = [] as any;
-                for (let item of _data["lineItems"])
-                    this.lineItems!.push(AccountingApiEntitiesLineItem.fromJS(item));
+            if (Array.isArray(_data["expenses"])) {
+                this.expenses = [] as any;
+                for (let item of _data["expenses"])
+                    this.expenses!.push(AccountingApiEntitiesExpense.fromJS(item));
             }
+            this.actualAmountSpent = _data["actualAmountSpent"];
         }
     }
 
@@ -2666,60 +2670,24 @@ export class EntitiesBudget implements IEntitiesBudget {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["name"] = this.name;
         data["expectedAmountToSpend"] = this.expectedAmountToSpend;
-        if (Array.isArray(this.lineItems)) {
-            data["lineItems"] = [];
-            for (let item of this.lineItems)
-                data["lineItems"].push(item.toJSON());
+        if (Array.isArray(this.expenses)) {
+            data["expenses"] = [];
+            for (let item of this.expenses)
+                data["expenses"].push(item.toJSON());
         }
+        data["actualAmountSpent"] = this.actualAmountSpent;
         return data;
     }
 }
 
 export interface IEntitiesBudget {
     id?: number;
+    name?: string;
     expectedAmountToSpend?: number;
-    lineItems?: AccountingApiEntitiesLineItem[];
-}
-
-export class EntitiesLineItem implements IEntitiesLineItem {
-    name?: string;
-    amount?: number;
-
-    constructor(data?: IEntitiesLineItem) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.amount = _data["amount"];
-        }
-    }
-
-    static fromJS(data: any): EntitiesLineItem {
-        data = typeof data === 'object' ? data : {};
-        let result = new EntitiesLineItem();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["amount"] = this.amount;
-        return data;
-    }
-}
-
-export interface IEntitiesLineItem {
-    name?: string;
-    amount?: number;
+    expenses?: AccountingApiEntitiesExpense[] | undefined;
+    actualAmountSpent?: number;
 }
 
 export class BudgetsGetBudgetResponse implements IBudgetsGetBudgetResponse {
@@ -2825,7 +2793,7 @@ export interface IBudgetsDeleteBudgetResponse {
 }
 
 export class BudgetsDeleteBudgetRequest implements IBudgetsDeleteBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget!: AccountingApiEntitiesBudget;
 
     constructor(data?: IBudgetsDeleteBudgetRequest) {
         if (data) {
@@ -2834,11 +2802,14 @@ export class BudgetsDeleteBudgetRequest implements IBudgetsDeleteBudgetRequest {
                     (<any>this)[property] = (<any>data)[property];
             }
         }
+        if (!data) {
+            this.budget = new AccountingApiEntitiesBudget();
+        }
     }
 
     init(_data?: any) {
         if (_data) {
-            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : <any>undefined;
+            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : new AccountingApiEntitiesBudget();
         }
     }
 
@@ -2857,7 +2828,7 @@ export class BudgetsDeleteBudgetRequest implements IBudgetsDeleteBudgetRequest {
 }
 
 export interface IBudgetsDeleteBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget: AccountingApiEntitiesBudget;
 }
 
 export class BudgetsCreateBudgetResponse implements IBudgetsCreateBudgetResponse {
@@ -2897,7 +2868,7 @@ export interface IBudgetsCreateBudgetResponse {
 }
 
 export class BudgetsCreateBudgetRequest implements IBudgetsCreateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget!: AccountingApiEntitiesBudget;
 
     constructor(data?: IBudgetsCreateBudgetRequest) {
         if (data) {
@@ -2906,11 +2877,14 @@ export class BudgetsCreateBudgetRequest implements IBudgetsCreateBudgetRequest {
                     (<any>this)[property] = (<any>data)[property];
             }
         }
+        if (!data) {
+            this.budget = new AccountingApiEntitiesBudget();
+        }
     }
 
     init(_data?: any) {
         if (_data) {
-            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : <any>undefined;
+            this.budget = _data["budget"] ? AccountingApiEntitiesBudget.fromJS(_data["budget"]) : new AccountingApiEntitiesBudget();
         }
     }
 
@@ -2929,7 +2903,7 @@ export class BudgetsCreateBudgetRequest implements IBudgetsCreateBudgetRequest {
 }
 
 export interface IBudgetsCreateBudgetRequest {
-    budget?: AccountingApiEntitiesBudget;
+    budget: AccountingApiEntitiesBudget;
 }
 
 export class ApiException extends Error {
