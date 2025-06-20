@@ -1,13 +1,17 @@
-using Api.Configuration;
+using Accounting.Api.Configuration;
+using Accounting.Api.Entities;
+using Accounting.Api.Features.Accounts.AccountStore;
+using Accounting.Api.Services;
+using Accounting.Api.Services.Interfaces;
 using FastEndpoints;
 using FastEndpoints.Swagger;
-using JasperFx.Core;
 using Marten;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Npgsql;
 using Weasel.Core;
 using Wolverine;
-using Wolverine.ErrorHandling;
 using Wolverine.Marten;
-
 
 namespace Accounting.Api
 {
@@ -17,15 +21,22 @@ namespace Accounting.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var hostSettings = builder.Configuration.GetSection("Host").Get<HostSettings>()!;
+            builder.Services.AddSingleton(hostSettings);
+
+            var mailSettings = builder.Configuration.GetSection("Mail").Get<MailSettings>()!;
+            builder.Services.AddSingleton(mailSettings);
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
             builder.Services.AddMarten(opts =>
             {
-                opts.Connection(builder.Configuration.GetConnectionString("DefaultConnection"));
+                opts.Connection(connectionString);
                 opts.DatabaseSchemaName = "db";
                 opts.UseSystemTextJsonForSerialization();
                 opts.CreateDatabasesForTenants(c =>
                 {
-                    c.MaintenanceDatabase(builder.Configuration.GetConnectionString("DefaultConnection"));
+                    c.MaintenanceDatabase(connectionString);
                     c.ForTenant()
                         .CheckAgainstPgDatabase()
                         .WithOwner("postgres")
@@ -40,11 +51,25 @@ namespace Accounting.Api
                     opts.AutoCreateSchemaObjects = AutoCreate.All;
                 }
             })
-            .IntegrateWithWolverine()
-            .UseLightweightSessions()
-            .UseNpgsqlDataSource();
+            .IntegrateWithWolverine();
 
-            builder.Services.AddNpgsqlDataSource(builder.Configuration.GetConnectionString("DefaultConnection"));
+            builder.Services
+                .AddIdentity<Account, Role>(options =>
+                {
+                    options.Password.RequireDigit = true;
+                    options.Password.RequiredLength = 8;
+                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequireUppercase = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequiredUniqueChars = 1;
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddUserStore<UserStore>()
+                .AddRoleStore<RoleStore>()
+                .AddDefaultTokenProviders();
+
+            builder.Services.AddScoped<IMailService, MailService>();
+
             builder.Host.UseWolverine().StartAsync();
             // builder.Host.UseWolverine(opts =>
             // {
@@ -72,9 +97,29 @@ namespace Accounting.Api
                 }
             );
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+            builder.Services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "https://your-auth-server.com";
+                    options.Audience = "your-api-audience";
+                });
+            builder.Services.AddAuthorization();
+
             var app = builder.Build();
 
-            app.UseHttpsRedirection(); ;
+            app.UseHttpsRedirection();
+            app.UseCors("AllowAll");
+            app.UseAuthorization();
             app.UseFastEndpoints().UseSwaggerGen();
             app.Run();
         }

@@ -1,5 +1,6 @@
 using Accounting.Api.Entities;
 using FastEndpoints;
+using FluentValidation;
 
 namespace Accounting.Api.Features.Budgets.GetBudget
 {
@@ -17,7 +18,7 @@ namespace Accounting.Api.Features.Budgets.GetBudget
     {
         public Validator()
         {
-
+            RuleFor(x => x.Id).NotEmpty().WithMessage("Budget Id is required.");
         }
     }
 }

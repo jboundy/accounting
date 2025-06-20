@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Accounting.Api.Entities
 {
-    public class Transactions
+    public class Transaction
     {
         public int Id { get; set; }
         public int BudgetId { get; set; }

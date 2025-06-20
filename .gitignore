@@ -60,3 +60,4 @@ api/bin/*
 frontend/.eslintrc.cjs
 api/Properties/*
 frontend/package-lock.json
+tests/api/Accounting.Api.Tests/obj/*

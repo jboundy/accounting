@@ -6,6 +6,7 @@ interface CurrencyInputProps {
   value: number;
   onChange: (value: number) => void;
   placeholder?: string;
+  errorMessage?: string | undefined;
 }
 
 const CurrencyInput: React.FC<CurrencyInputProps> = ({
@@ -13,6 +14,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
   value,
   onChange,
   placeholder,
+  errorMessage,
 }) => {
   const [display, setDisplay] = useState(formatCurrency(value));
 
@@ -41,17 +43,22 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
   }
 
   return (
-    <Form.Group>
-      {label && <Form.Label>{label}</Form.Label>}
-      <Form.Control
-        type="text"
-        inputMode="decimal"
-        value={display}
-        onChange={handleInputChange}
-        onBlur={handleBlur}
-        placeholder={placeholder || "$0.00"}
-      />
-    </Form.Group>
+    <>
+      <Form.Group>
+        {label && <Form.Label>{label}</Form.Label>}
+        <Form.Control
+          type="text"
+          inputMode="decimal"
+          value={display}
+          onChange={handleInputChange}
+          onBlur={handleBlur}
+          placeholder={placeholder || "$0.00"}
+        />
+      </Form.Group>
+      <Form.Control.Feedback type="invalid">
+        {errorMessage}
+      </Form.Control.Feedback>
+    </>
   );
 };
 

@@ -628,6 +628,10 @@ export class Client {
             result400 = FastEndpointsErrorResponse.fromJS(resultData400);
             return throwException("Bad Request", status, _responseText, _headers, result400);
             });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
+            });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -685,6 +689,253 @@ export class Client {
             });
         }
         return Promise.resolve<AccountingApiFeaturesBudgetsGetBudgetResponse>(null as any);
+    }
+
+    /**
+     * @return Success
+     */
+    accountingApiFeaturesBudgetsGetBudgetsEndpoint(userId: number): Promise<AccountingApiFeaturesBudgetsGetBudgetsResponse> {
+        let url_ = this.baseUrl + "/budgets/{userId}";
+        if (userId === undefined || userId === null)
+            throw new Error("The parameter 'userId' must be defined.");
+        url_ = url_.replace("{userId}", encodeURIComponent("" + userId));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAccountingApiFeaturesBudgetsGetBudgetsEndpoint(_response);
+        });
+    }
+
+    protected processAccountingApiFeaturesBudgetsGetBudgetsEndpoint(response: Response): Promise<AccountingApiFeaturesBudgetsGetBudgetsResponse> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AccountingApiFeaturesBudgetsGetBudgetsResponse.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = FastEndpointsErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<AccountingApiFeaturesBudgetsGetBudgetsResponse>(null as any);
+    }
+
+    /**
+     * @return Success
+     */
+    accountingApiFeaturesAccountsResetPasswordEndpoint(request: AccountingApiFeaturesAccountsResetPasswordRequest): Promise<AccountingApiFeaturesAccountsResetPasswordResponse> {
+        let url_ = this.baseUrl + "/account/resetpassword";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(request);
+
+        let options_: RequestInit = {
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAccountingApiFeaturesAccountsResetPasswordEndpoint(_response);
+        });
+    }
+
+    protected processAccountingApiFeaturesAccountsResetPasswordEndpoint(response: Response): Promise<AccountingApiFeaturesAccountsResetPasswordResponse> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AccountingApiFeaturesAccountsResetPasswordResponse.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = FastEndpointsErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<AccountingApiFeaturesAccountsResetPasswordResponse>(null as any);
+    }
+
+    /**
+     * @return Success
+     */
+    accountingApiFeaturesAccountsForgotPasswordEndpoint(request: AccountingApiFeaturesAccountsForgotPasswordRequest): Promise<AccountingApiFeaturesAccountsForgotPasswordResponse> {
+        let url_ = this.baseUrl + "/account/forgotpassword";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(request);
+
+        let options_: RequestInit = {
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAccountingApiFeaturesAccountsForgotPasswordEndpoint(_response);
+        });
+    }
+
+    protected processAccountingApiFeaturesAccountsForgotPasswordEndpoint(response: Response): Promise<AccountingApiFeaturesAccountsForgotPasswordResponse> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AccountingApiFeaturesAccountsForgotPasswordResponse.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = FastEndpointsErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<AccountingApiFeaturesAccountsForgotPasswordResponse>(null as any);
+    }
+
+    /**
+     * @return Success
+     */
+    accountingApiFeaturesAccountsCreateAccountEndpoint(request: AccountingApiFeaturesAccountsCreateAccountRequest): Promise<AccountingApiFeaturesAccountsCreateAccountResponse> {
+        let url_ = this.baseUrl + "/account";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(request);
+
+        let options_: RequestInit = {
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAccountingApiFeaturesAccountsCreateAccountEndpoint(_response);
+        });
+    }
+
+    protected processAccountingApiFeaturesAccountsCreateAccountEndpoint(response: Response): Promise<AccountingApiFeaturesAccountsCreateAccountResponse> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AccountingApiFeaturesAccountsCreateAccountResponse.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = FastEndpointsErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<AccountingApiFeaturesAccountsCreateAccountResponse>(null as any);
+    }
+
+    /**
+     * @return Success
+     */
+    accountingApiFeaturesAccountsChangePasswordEndpoint(request: AccountingApiFeaturesAccountsChangePasswordRequest): Promise<AccountingApiFeaturesAccountsChangePasswordResponse> {
+        let url_ = this.baseUrl + "/account/changepassword";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(request);
+
+        let options_: RequestInit = {
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAccountingApiFeaturesAccountsChangePasswordEndpoint(_response);
+        });
+    }
+
+    protected processAccountingApiFeaturesAccountsChangePasswordEndpoint(response: Response): Promise<AccountingApiFeaturesAccountsChangePasswordResponse> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AccountingApiFeaturesAccountsChangePasswordResponse.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = FastEndpointsErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            return throwException("Unauthorized", status, _responseText, _headers);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<AccountingApiFeaturesAccountsChangePasswordResponse>(null as any);
     }
 }
 
@@ -1557,6 +1808,7 @@ export interface IAccountingApiFeaturesBudgetsUpdateBudgetRequest {
 
 export class AccountingApiEntitiesBudget implements IAccountingApiEntitiesBudget {
     id?: number;
+    userId?: number;
     name?: string;
     expectedAmountToSpend?: number;
     expenses?: AccountingApiEntitiesExpense[] | undefined;
@@ -1574,6 +1826,7 @@ export class AccountingApiEntitiesBudget implements IAccountingApiEntitiesBudget
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.userId = _data["userId"];
             this.name = _data["name"];
             this.expectedAmountToSpend = _data["expectedAmountToSpend"];
             if (Array.isArray(_data["expenses"])) {
@@ -1595,6 +1848,7 @@ export class AccountingApiEntitiesBudget implements IAccountingApiEntitiesBudget
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["userId"] = this.userId;
         data["name"] = this.name;
         data["expectedAmountToSpend"] = this.expectedAmountToSpend;
         if (Array.isArray(this.expenses)) {
@@ -1609,6 +1863,7 @@ export class AccountingApiEntitiesBudget implements IAccountingApiEntitiesBudget
 
 export interface IAccountingApiEntitiesBudget {
     id?: number;
+    userId?: number;
     name?: string;
     expectedAmountToSpend?: number;
     expenses?: AccountingApiEntitiesExpense[] | undefined;
@@ -1679,6 +1934,80 @@ export class AccountingApiFeaturesBudgetsGetBudgetRequest implements IAccounting
 }
 
 export interface IAccountingApiFeaturesBudgetsGetBudgetRequest {
+}
+
+export class AccountingApiFeaturesBudgetsGetBudgetsResponse implements IAccountingApiFeaturesBudgetsGetBudgetsResponse {
+    budgets?: AccountingApiEntitiesBudget[];
+
+    constructor(data?: IAccountingApiFeaturesBudgetsGetBudgetsResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["budgets"])) {
+                this.budgets = [] as any;
+                for (let item of _data["budgets"])
+                    this.budgets!.push(AccountingApiEntitiesBudget.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesBudgetsGetBudgetsResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesBudgetsGetBudgetsResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.budgets)) {
+            data["budgets"] = [];
+            for (let item of this.budgets)
+                data["budgets"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesBudgetsGetBudgetsResponse {
+    budgets?: AccountingApiEntitiesBudget[];
+}
+
+export class AccountingApiFeaturesBudgetsGetBudgetsRequest implements IAccountingApiFeaturesBudgetsGetBudgetsRequest {
+
+    constructor(data?: IAccountingApiFeaturesBudgetsGetBudgetsRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesBudgetsGetBudgetsRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesBudgetsGetBudgetsRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesBudgetsGetBudgetsRequest {
 }
 
 export class AccountingApiFeaturesBudgetsDeleteBudgetResponse implements IAccountingApiFeaturesBudgetsDeleteBudgetResponse {
@@ -1829,6 +2158,322 @@ export class AccountingApiFeaturesBudgetsCreateBudgetRequest implements IAccount
 
 export interface IAccountingApiFeaturesBudgetsCreateBudgetRequest {
     budget: AccountingApiEntitiesBudget;
+}
+
+export class AccountingApiFeaturesAccountsResetPasswordResponse implements IAccountingApiFeaturesAccountsResetPasswordResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountingApiFeaturesAccountsResetPasswordResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsResetPasswordResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsResetPasswordResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsResetPasswordResponse {
+    saved?: boolean;
+}
+
+export class AccountingApiFeaturesAccountsResetPasswordRequest implements IAccountingApiFeaturesAccountsResetPasswordRequest {
+    userId?: string;
+    code?: string;
+    password?: string;
+
+    constructor(data?: IAccountingApiFeaturesAccountsResetPasswordRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.userId = _data["userId"];
+            this.code = _data["code"];
+            this.password = _data["password"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsResetPasswordRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsResetPasswordRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["code"] = this.code;
+        data["password"] = this.password;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsResetPasswordRequest {
+    userId?: string;
+    code?: string;
+    password?: string;
+}
+
+export class AccountingApiFeaturesAccountsForgotPasswordResponse implements IAccountingApiFeaturesAccountsForgotPasswordResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountingApiFeaturesAccountsForgotPasswordResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsForgotPasswordResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsForgotPasswordResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsForgotPasswordResponse {
+    saved?: boolean;
+}
+
+export class AccountingApiFeaturesAccountsForgotPasswordRequest implements IAccountingApiFeaturesAccountsForgotPasswordRequest {
+    email!: string;
+
+    constructor(data?: IAccountingApiFeaturesAccountsForgotPasswordRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.email = _data["email"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsForgotPasswordRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsForgotPasswordRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["email"] = this.email;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsForgotPasswordRequest {
+    email: string;
+}
+
+export class AccountingApiFeaturesAccountsCreateAccountResponse implements IAccountingApiFeaturesAccountsCreateAccountResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountingApiFeaturesAccountsCreateAccountResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsCreateAccountResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsCreateAccountResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsCreateAccountResponse {
+    saved?: boolean;
+}
+
+export class AccountingApiFeaturesAccountsCreateAccountRequest implements IAccountingApiFeaturesAccountsCreateAccountRequest {
+    firstName?: string;
+    lastName?: string;
+    userName!: string;
+    password!: string;
+
+    constructor(data?: IAccountingApiFeaturesAccountsCreateAccountRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.firstName = _data["firstName"];
+            this.lastName = _data["lastName"];
+            this.userName = _data["userName"];
+            this.password = _data["password"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsCreateAccountRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsCreateAccountRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["firstName"] = this.firstName;
+        data["lastName"] = this.lastName;
+        data["userName"] = this.userName;
+        data["password"] = this.password;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsCreateAccountRequest {
+    firstName?: string;
+    lastName?: string;
+    userName: string;
+    password: string;
+}
+
+export class AccountingApiFeaturesAccountsChangePasswordResponse implements IAccountingApiFeaturesAccountsChangePasswordResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountingApiFeaturesAccountsChangePasswordResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsChangePasswordResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsChangePasswordResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsChangePasswordResponse {
+    saved?: boolean;
+}
+
+export class AccountingApiFeaturesAccountsChangePasswordRequest implements IAccountingApiFeaturesAccountsChangePasswordRequest {
+    userId!: string;
+    currentPassword!: string;
+    newPassword!: string;
+
+    constructor(data?: IAccountingApiFeaturesAccountsChangePasswordRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.userId = _data["userId"];
+            this.currentPassword = _data["currentPassword"];
+            this.newPassword = _data["newPassword"];
+        }
+    }
+
+    static fromJS(data: any): AccountingApiFeaturesAccountsChangePasswordRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountingApiFeaturesAccountsChangePasswordRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["currentPassword"] = this.currentPassword;
+        data["newPassword"] = this.newPassword;
+        return data;
+    }
+}
+
+export interface IAccountingApiFeaturesAccountsChangePasswordRequest {
+    userId: string;
+    currentPassword: string;
+    newPassword: string;
 }
 
 export class InvoicesUpdateInvoiceResponse implements IInvoicesUpdateInvoiceResponse {
@@ -2632,6 +3277,7 @@ export interface IBudgetsUpdateBudgetRequest {
 
 export class EntitiesBudget implements IEntitiesBudget {
     id?: number;
+    userId?: number;
     name?: string;
     expectedAmountToSpend?: number;
     expenses?: AccountingApiEntitiesExpense[] | undefined;
@@ -2649,6 +3295,7 @@ export class EntitiesBudget implements IEntitiesBudget {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.userId = _data["userId"];
             this.name = _data["name"];
             this.expectedAmountToSpend = _data["expectedAmountToSpend"];
             if (Array.isArray(_data["expenses"])) {
@@ -2670,6 +3317,7 @@ export class EntitiesBudget implements IEntitiesBudget {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["userId"] = this.userId;
         data["name"] = this.name;
         data["expectedAmountToSpend"] = this.expectedAmountToSpend;
         if (Array.isArray(this.expenses)) {
@@ -2684,6 +3332,7 @@ export class EntitiesBudget implements IEntitiesBudget {
 
 export interface IEntitiesBudget {
     id?: number;
+    userId?: number;
     name?: string;
     expectedAmountToSpend?: number;
     expenses?: AccountingApiEntitiesExpense[] | undefined;
@@ -2754,6 +3403,80 @@ export class BudgetsGetBudgetRequest implements IBudgetsGetBudgetRequest {
 }
 
 export interface IBudgetsGetBudgetRequest {
+}
+
+export class BudgetsGetBudgetsResponse implements IBudgetsGetBudgetsResponse {
+    budgets?: AccountingApiEntitiesBudget[];
+
+    constructor(data?: IBudgetsGetBudgetsResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["budgets"])) {
+                this.budgets = [] as any;
+                for (let item of _data["budgets"])
+                    this.budgets!.push(AccountingApiEntitiesBudget.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): BudgetsGetBudgetsResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new BudgetsGetBudgetsResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.budgets)) {
+            data["budgets"] = [];
+            for (let item of this.budgets)
+                data["budgets"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IBudgetsGetBudgetsResponse {
+    budgets?: AccountingApiEntitiesBudget[];
+}
+
+export class BudgetsGetBudgetsRequest implements IBudgetsGetBudgetsRequest {
+
+    constructor(data?: IBudgetsGetBudgetsRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+    }
+
+    static fromJS(data: any): BudgetsGetBudgetsRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new BudgetsGetBudgetsRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        return data;
+    }
+}
+
+export interface IBudgetsGetBudgetsRequest {
 }
 
 export class BudgetsDeleteBudgetResponse implements IBudgetsDeleteBudgetResponse {
@@ -2904,6 +3627,322 @@ export class BudgetsCreateBudgetRequest implements IBudgetsCreateBudgetRequest {
 
 export interface IBudgetsCreateBudgetRequest {
     budget: AccountingApiEntitiesBudget;
+}
+
+export class AccountsResetPasswordResponse implements IAccountsResetPasswordResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountsResetPasswordResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountsResetPasswordResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsResetPasswordResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountsResetPasswordResponse {
+    saved?: boolean;
+}
+
+export class AccountsResetPasswordRequest implements IAccountsResetPasswordRequest {
+    userId?: string;
+    code?: string;
+    password?: string;
+
+    constructor(data?: IAccountsResetPasswordRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.userId = _data["userId"];
+            this.code = _data["code"];
+            this.password = _data["password"];
+        }
+    }
+
+    static fromJS(data: any): AccountsResetPasswordRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsResetPasswordRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["code"] = this.code;
+        data["password"] = this.password;
+        return data;
+    }
+}
+
+export interface IAccountsResetPasswordRequest {
+    userId?: string;
+    code?: string;
+    password?: string;
+}
+
+export class AccountsForgotPasswordResponse implements IAccountsForgotPasswordResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountsForgotPasswordResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountsForgotPasswordResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsForgotPasswordResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountsForgotPasswordResponse {
+    saved?: boolean;
+}
+
+export class AccountsForgotPasswordRequest implements IAccountsForgotPasswordRequest {
+    email!: string;
+
+    constructor(data?: IAccountsForgotPasswordRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.email = _data["email"];
+        }
+    }
+
+    static fromJS(data: any): AccountsForgotPasswordRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsForgotPasswordRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["email"] = this.email;
+        return data;
+    }
+}
+
+export interface IAccountsForgotPasswordRequest {
+    email: string;
+}
+
+export class AccountsCreateAccountResponse implements IAccountsCreateAccountResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountsCreateAccountResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountsCreateAccountResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsCreateAccountResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountsCreateAccountResponse {
+    saved?: boolean;
+}
+
+export class AccountsCreateAccountRequest implements IAccountsCreateAccountRequest {
+    firstName?: string;
+    lastName?: string;
+    userName!: string;
+    password!: string;
+
+    constructor(data?: IAccountsCreateAccountRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.firstName = _data["firstName"];
+            this.lastName = _data["lastName"];
+            this.userName = _data["userName"];
+            this.password = _data["password"];
+        }
+    }
+
+    static fromJS(data: any): AccountsCreateAccountRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsCreateAccountRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["firstName"] = this.firstName;
+        data["lastName"] = this.lastName;
+        data["userName"] = this.userName;
+        data["password"] = this.password;
+        return data;
+    }
+}
+
+export interface IAccountsCreateAccountRequest {
+    firstName?: string;
+    lastName?: string;
+    userName: string;
+    password: string;
+}
+
+export class AccountsChangePasswordResponse implements IAccountsChangePasswordResponse {
+    saved?: boolean;
+
+    constructor(data?: IAccountsChangePasswordResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.saved = _data["saved"];
+        }
+    }
+
+    static fromJS(data: any): AccountsChangePasswordResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsChangePasswordResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["saved"] = this.saved;
+        return data;
+    }
+}
+
+export interface IAccountsChangePasswordResponse {
+    saved?: boolean;
+}
+
+export class AccountsChangePasswordRequest implements IAccountsChangePasswordRequest {
+    userId!: string;
+    currentPassword!: string;
+    newPassword!: string;
+
+    constructor(data?: IAccountsChangePasswordRequest) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.userId = _data["userId"];
+            this.currentPassword = _data["currentPassword"];
+            this.newPassword = _data["newPassword"];
+        }
+    }
+
+    static fromJS(data: any): AccountsChangePasswordRequest {
+        data = typeof data === 'object' ? data : {};
+        let result = new AccountsChangePasswordRequest();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["currentPassword"] = this.currentPassword;
+        data["newPassword"] = this.newPassword;
+        return data;
+    }
+}
+
+export interface IAccountsChangePasswordRequest {
+    userId: string;
+    currentPassword: string;
+    newPassword: string;
 }
 
 export class ApiException extends Error {

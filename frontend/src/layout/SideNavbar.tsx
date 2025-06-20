@@ -11,7 +11,7 @@ const SideNavbar = () => {
   const handleShow = () => setShow(true);
 
   const items = [
-    { path: "/budget", title: "Budget", icon: "bi-house-door" },
+    { path: "/budget/create", title: "Budget", icon: "bi-house-door" },
     { path: "/console/apps", title: "Applications", icon: "bi-layers" },
     { path: "/console/users", title: "Users", icon: "bi-people" },
     { path: "/console/settings", title: "Settings", icon: "bi-gear" },

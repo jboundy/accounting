@@ -1,13 +1,14 @@
+using NJsonSchema;
 using NSwag.Generation.Processors;
 using NSwag.Generation.Processors.Contexts;
 
-namespace Api.Configuration
+namespace Accounting.Api.Configuration
 {
     public class CustomSchemaDocumentProcessor : IDocumentProcessor
     {
         public void Process(DocumentProcessorContext context)
         {
-            var modifiedSchemas = new Dictionary<string, NJsonSchema.JsonSchema>();
+            var modifiedSchemas = new Dictionary<string, JsonSchema>();
 
             foreach (var schema in context.Document.Definitions)
             {

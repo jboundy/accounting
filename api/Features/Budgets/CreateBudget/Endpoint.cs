@@ -14,7 +14,6 @@ namespace Accounting.Api.Features.Budgets.CreateBudget
         public override void Configure()
         {
             Post("budget");
-            AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request req, CancellationToken ct)
