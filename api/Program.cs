@@ -1,3 +1,4 @@
+using System.Text;
 using Accounting.Api.Configuration;
 using Accounting.Api.Entities;
 using Accounting.Api.Features.Accounts.AccountStore;
@@ -6,9 +7,9 @@ using Accounting.Api.Services.Interfaces;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Marten;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Npgsql;
+using Microsoft.IdentityModel.Tokens;
 using Weasel.Core;
 using Wolverine;
 using Wolverine.Marten;
@@ -26,6 +27,9 @@ namespace Accounting.Api
 
             var mailSettings = builder.Configuration.GetSection("Mail").Get<MailSettings>()!;
             builder.Services.AddSingleton(mailSettings);
+
+            var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>()!;
+            builder.Services.AddSingleton(jwtSettings);
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -54,7 +58,7 @@ namespace Accounting.Api
             .IntegrateWithWolverine();
 
             builder.Services
-                .AddIdentity<Account, Role>(options =>
+                .AddIdentityCore<Account>(options =>
                 {
                     options.Password.RequireDigit = true;
                     options.Password.RequiredLength = 8;
@@ -64,6 +68,7 @@ namespace Accounting.Api
                     options.Password.RequiredUniqueChars = 1;
                     options.User.RequireUniqueEmail = true;
                 })
+                .AddRoles<Role>()
                 .AddUserStore<UserStore>()
                 .AddRoleStore<RoleStore>()
                 .AddDefaultTokenProviders();
@@ -110,8 +115,40 @@ namespace Accounting.Api
             builder.Services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://your-auth-server.com";
+                    options.Authority = null;
+                    options.SaveToken = true;
+                    options.RequireHttpsMetadata = false;
                     options.Audience = "your-api-audience";
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = jwtSettings.Issuer,
+                        ValidAudience = jwtSettings.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtSettings.Key)) // keep in config!
+                    };
+
+                    // ✅ Prevent redirects for APIs
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnAuthenticationFailed = context =>
+                        {
+                            Console.WriteLine("AUTH FAIL:");
+                            Console.WriteLine(context.Exception.Message);
+                            return Task.CompletedTask;
+                        },
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+                            context.Response.StatusCode = 401;
+                            context.Response.ContentType = "application/json";
+                            return context.Response.WriteAsync("{\"error\": \"Unauthorized\"}");
+                        }
+                    };
+
                 });
             builder.Services.AddAuthorization();
 
@@ -119,6 +156,7 @@ namespace Accounting.Api
 
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseFastEndpoints().UseSwaggerGen();
             app.Run();

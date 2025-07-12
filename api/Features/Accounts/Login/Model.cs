@@ -11,7 +11,13 @@ namespace Accounting.Api.Features.Accounts.Login
 
     public class Response
     {
-        public bool Saved { get; set; }
+        public string UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public bool Authorized { get; set; }
+        public string JWTCode { get; set; }
+        public string[] Roles { get; set; }
     }
 
     public class Validator : Validator<Request>

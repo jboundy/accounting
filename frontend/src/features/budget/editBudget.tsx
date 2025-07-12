@@ -14,9 +14,10 @@ import { editBudgetSchema } from "./schemas/editBudgetSchema";
 
 interface EditBudgetProps {
   budget: IEntitiesBudget;
+  callback: () => void;
 }
 
-export default function EditBudget({ budget }: EditBudgetProps) {
+export default function EditBudget({ budget, callback }: EditBudgetProps) {
   const apiClient = useApiClient();
   const {
     register,
@@ -41,6 +42,8 @@ export default function EditBudget({ budget }: EditBudgetProps) {
     } else {
       alert("Unable to save");
     }
+
+    callback();
   };
 
   return (

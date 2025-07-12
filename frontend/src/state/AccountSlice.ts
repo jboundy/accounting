@@ -1,20 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface AccountState {
-  userId: string | null;
-  firstName: string | null;
-  lastName: string | null;
-  email: string | null;
-  token: string | null;
-  roles: string[];
+  userId: string | undefined;
+  firstName: string | undefined;
+  lastName: string | undefined;
+  email: string | undefined;
+  jwtCode: string | undefined;
+  roles: string[] | undefined;
 }
 
 const initialState: AccountState = {
-  userId: null,
-  firstName: null,
-  lastName: null,
-  email: null,
-  token: null,
+  userId: undefined,
+  firstName: undefined,
+  lastName: undefined,
+  email: undefined,
+  jwtCode: undefined,
   roles: [],
 };
 
@@ -26,11 +26,11 @@ const accountSlice = createSlice({
       Object.assign(state, action.payload);
     },
     logout: (state) => {
-      state.token = null;
-      state.userId = null;
-      state.email = null;
-      state.firstName = null;
-      state.lastName = null;
+      state.jwtCode = undefined;
+      state.userId = undefined;
+      state.email = undefined;
+      state.firstName = undefined;
+      state.lastName = undefined;
       state.roles = [];
     },
   },

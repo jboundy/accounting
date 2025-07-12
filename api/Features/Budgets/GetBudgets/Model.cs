@@ -6,7 +6,7 @@ namespace Accounting.Api.Features.Budgets.GetBudgets
 {
     public class Request
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 
     public class Response

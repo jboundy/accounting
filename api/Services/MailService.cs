@@ -12,9 +12,7 @@ namespace Accounting.Api.Services
     {
         public async Task<MailjetResponse> SendMailAsync(Account user, string subject, string htmlContent)
         {
-            MailjetClient client = new MailjetClient(mailSettings.ApiKey, mailSettings.ApiSecret)
-            {
-            };
+            MailjetClient client = new MailjetClient(mailSettings.ApiKey, mailSettings.ApiSecret);
             var messageToSend = JObject.FromObject(CreateMailMessage(user, subject, htmlContent));
 
             MailjetRequest request = new MailjetRequest

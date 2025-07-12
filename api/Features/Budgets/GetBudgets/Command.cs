@@ -5,5 +5,5 @@ using System.Threading.Tasks;
 
 namespace Accounting.Api.Features.Budgets.GetBudgets
 {
-    public record Command(int userId, CancellationToken ct);
+    public record Command(Guid userId, CancellationToken ct);
 }

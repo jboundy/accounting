@@ -13,14 +13,21 @@ namespace Accounting.Api.Features.Accounts.Login
         }
         public override void Configure()
         {
-            AllowAnonymous();
             Post("login");
+            AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request req, CancellationToken ct)
         {
             var response = await _messageBus.InvokeAsync<Response>(new Command(req.UserName, req.Password, ct));
-            await SendAsync(response, StatusCodes.Status200OK, ct);
+            if (response.Authorized)
+            {
+                await SendAsync(response, StatusCodes.Status200OK, ct);
+            }
+            else
+            {
+                await SendUnauthorizedAsync(ct);
+            }
         }
     }
 }

@@ -9,11 +9,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SubmitButton from "../../components/submitButton";
 import InputControl from "../../components/inputControl";
-import { createBudgetSchema } from "../../schemas/createBudgetSchema";
 import { useApiClient } from "../../context/ApiClientContext";
+import { createBudgetSchema } from "./schemas/createBudgetSchema";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/Store";
 
 export default function CreateBudget() {
   const apiClient = useApiClient();
+  const userId = useSelector((state: RootState) => state.account.userId);
   const {
     register,
     getValues,
@@ -25,6 +28,7 @@ export default function CreateBudget() {
   });
 
   const onSubmit = async (data: IEntitiesBudget) => {
+    data.userId = userId;
     const request = new AccountingApiFeaturesBudgetsCreateBudgetRequest();
     request.budget = new EntitiesBudget(data);
 

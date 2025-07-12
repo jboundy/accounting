@@ -11,14 +11,14 @@ namespace Accounting.Api.Models.Mail
                 Email = fromEmail,
                 Name = fromName
             };
-            To = new List<MessageEmailName>()
-                {
+            To =
+                [
                     new MessageEmailName
                     {
                         Email = toEmail,
                         Name = toName
                     }
-                };
+                ];
 
             Subject = subject;
             HTMLPart = html;
